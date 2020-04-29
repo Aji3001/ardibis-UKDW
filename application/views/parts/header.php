@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="<?= base_url()?>assets/img/ukdw.png" rel="icon">
@@ -17,21 +17,23 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <link href="<?= base_url()?>assets/css/ruang-admin.min.css" rel="stylesheet">
   <link href="<?= base_url()?>assets/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url()?>">
         <div class="sidebar-brand-icon">
           <img src="<?= base_url()?>assets/img/ukdw.png">
         </div>
-        <div class="sidebar-brand-text mx-3">ardi-FB UKDW</div>
+        <div class="sidebar-brand-text mx-3">ardibis UKDW</div>
       </a>
       <hr class="sidebar-divider my-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item  ">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -40,13 +42,13 @@
         Menu
       </div>
       
-      <li class="nav-item">
-        <a class="nav-link" href="forms.html">
-          <i class="fab fa-fw fa-wpforms"></i>
+      <li class="nav-item <?php if($page=='index'){echo 'active';}?>">
+        <a class="nav-link" href="<?=base_url()?>">
+          <i class="fas fa-fw fa-search"></i>
           <span>Pencarian</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($page=='newDoc'){echo 'active';}?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
           aria-controls="collapseTable">
           <i class="fas fa-fw fa-table"></i>
@@ -55,8 +57,8 @@
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Dokumen</h6>
-            <a class="collapse-item" href="simple-tables.html">Tambah Dokumen</a>
-            <a class="collapse-item" href="datatables.html">Daftar Dokumen</a>
+            <a class="collapse-item <?php if($page=='newDoc'){echo 'active';}?>" href="<?=base_url('main/newDoc')?>">Tambah Dokumen</a>
+            <a class="collapse-item" href="#">Daftar Dokumen</a>
           </div>
         </div>
       </li>
@@ -66,24 +68,24 @@
         Status Surat
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Surat Masuk</span>
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-eye-dropper"></i>
+          <span>Perlu Pembaharuan</span>
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Surat Keluar</span>
         </a>
-      </li>
+      </li> -->
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
         Pengaturan
       </div>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
+      <li class="nav-item <?php if($page=='indexSet'){echo 'active';}?>">
+        <a class="nav-link" href="<?= base_url('setting')?>">
+          <i class="fas fa-fw fa-cog"></i>
           <span>Umum</span>
         </a>
       </li>
@@ -110,7 +112,7 @@
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  Notifikasi
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -148,42 +150,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <span class="badge badge-warning badge-counter">2</span>
-              </a>
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="<?= base_url()?>assets/img/man.png" style="max-width: 60px" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                      having.</div>
-                    <div class="small text-gray-500">Udin Cilok · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="<?= base_url()?>assets/img/girl.png" style="max-width: 60px" alt="">
-                    <div class="status-indicator bg-default"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
-                      say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Jaenab · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
+            
          
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
@@ -198,7 +165,7 @@
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">
+                <a class="dropdown-item" href="#">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

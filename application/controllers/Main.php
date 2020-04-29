@@ -3,8 +3,18 @@ class Main extends CI_Controller{
 
     public function index()
     {
-        $this->load->view('parts/header');
-        $this->load->view('admin/search');
+        $data['page']='index';
+        $this->load->view('parts/header',$data);
+        $this->load->view('main/search');
         $this->load->view('parts/footer');
     }
+
+    public function newdoc()
+    {
+        $data['page']='newDoc';
+        $this->load->view('parts/header',$data);
+        $this->load->view('main/newDoc');
+        $this->load->view('parts/footer');
+    }
+
 }

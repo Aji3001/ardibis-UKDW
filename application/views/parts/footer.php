@@ -22,6 +22,8 @@
   <script src="<?= base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
   <script src="<?= base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?= base_url()?>assets/js/ruang-admin.min.js"></script>
   <script src="<?= base_url()?>assets/vendor/chart.js/Chart.min.js"></script>
   <script src="<?= base_url()?>assets/js/demo/chart-area-demo.js"></script>
@@ -32,6 +34,7 @@
 
     $(document).ready(function () {
           $(".select2").select2();
+          $('#tableis').DataTable(); // ID From dataTable 
       });
   </script>  
 </body>

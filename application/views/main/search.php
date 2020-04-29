@@ -10,14 +10,21 @@
                     <input type="text" id="key" class="form-control" name="key" placeholder="kata kunci" value="<?php if(isset($_GET['key'])){echo $_GET['key'];}?>">
                 </div>
                 <div class="form-group col-md-3">
+                    <select name="kategori" id="kategori" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                        <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih kategori</option>
+                        <option value="sk" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'sk' ? 'selected=""' : '' ?>>SK</option>
+                        <option value="kategori2" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori2' ? 'selected=""' : '' ?>>Kategori 2</option>
+                    </select>
+                </div>
+                <!-- <div class="form-group col-md-3">
                     <select name="kategori" id="kategori" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                         <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih kategori</option>
                         <option value="kategori1" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori1' ? 'selected=""' : '' ?>>Kategori 1</option>
                         <option value="kategori2" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori2' ? 'selected=""' : '' ?>>Kategori 2</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="form-group col-md-3">
-                    <select name="keterangan" id="keterangan" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" >
+                    <select name="keterangan" id="keterangan" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" >
                         <option value="default" <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih keterangan</option>
                         <option value="masuk"  <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'masuk' ? 'selected=""' : '' ?>>Surat Masuk</option>
                         <option value="keluar"  <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'keluar' ? 'selected=""' : '' ?>>Surat Keluar</option>
@@ -96,11 +103,48 @@
     </div>
 </div>
 
-<div class="card mt-3">
-<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+<div class="card mt-3 mb-3">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Hasil Pencarian</h6>
     </div>
-    <div class="card-body">
-        <div id="hasil">Belum ada pencarian</div>
+    <div class="table-responsive p-3">
+        <table class="table align-items-center table-flush table-hover" id="tableis">
+            <thead class="thead-light">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Dokumen</th>
+                    <th>Kategori Dokumen</th>
+                    <th>Dari / Untuk</th>
+                    <th>Tgl Surat / Durasi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <tr>
+                    <td>1</td>
+                    <td>Tes Dokumen 1</td>
+                    <td>Surat Kerja</td>
+                    <td>PPLK</td>
+                    <td>01-06-2020</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info">Detail</a>
+                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Tes Dokumen 2</td>
+                    <td>Kategori 2</td>
+                    <td>PPLK</td>
+                    <td>01-12-2019</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info">Detail</a>
+                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+            
