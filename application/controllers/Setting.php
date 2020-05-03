@@ -63,6 +63,16 @@ class Setting extends CI_COntroller{
         redirect('setting');
     }
 
+    public function subKat($id)
+    {
+        $data['page']='setting';
+        $data['namakat']=$this->setting_model->getCatById($id);
+        $data['subkategori']=$this->setting_model->getSubKat($id);
+        $this->load->view('parts/header',$data);
+        $this->load->view('setting/subkat',$data);
+        $this->load->view('parts/footer');
+    }
+
     public function addSubKat()
     {
         $id = $this->input->post('id', true);
@@ -77,18 +87,20 @@ class Setting extends CI_COntroller{
         }else{
             $this->session->set_flashdata('error', 'Ada Kesalahan');
         }
-        redirect('setting');
+        redirect('setting/subkat/'.$id);
     }
 
-    public function getSubKatJson($id)
+    public function hapusSub($id, $backid)
     {
-        $result=$this->setting_model->getSubKatJson($id);
-        echo json_encode($result);
+        $hapus =$this->setting_model->deleteSubKat($id);
+        if($hapus=='1'){
+            $this->session->set_flashdata('success', 'Sub Kategori Berhasil Dihapus');
+        }else{
+            $this->session->set_flashdata('error', 'Ada Kesalahan');
+        }
+        redirect('setting/subkat/'.$backid);
     }
 
-    public function deleteSubKat()
-    {
-        $delete=$this->setting_model->deleteSubKat();
-        echo json_encode($delete);
-    }
+  
+
 }

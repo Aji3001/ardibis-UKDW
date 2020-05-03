@@ -9,12 +9,6 @@ class Main extends CI_Controller{
         $this->load->view('parts/footer');
     }
 
-    public function newdoc()
-    {
-        $data['page']='newDoc';
-        $this->load->view('parts/header',$data);
-        $this->load->view('main/newDoc');
-        $this->load->view('parts/footer');
-    }
+    
 
 }

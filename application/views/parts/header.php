@@ -57,7 +57,7 @@
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Dokumen</h6>
-            <a class="collapse-item <?php if($page=='newDoc'){echo 'active';}?>" href="<?=base_url('main/newDoc')?>">Tambah Dokumen</a>
+            <a class="collapse-item <?php if($page=='newDoc'){echo 'active';}?>" href="<?=base_url('doc')?>">Tambah Dokumen</a>
             <a class="collapse-item" href="#">Daftar Dokumen</a>
           </div>
         </div>

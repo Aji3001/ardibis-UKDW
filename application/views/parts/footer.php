@@ -70,6 +70,7 @@
     $(document).ready(function () {
           $(".select2").select2();
           $('#tableis').DataTable(); // ID From dataTable 
+          $('.dt2').DataTable(); // ID From dataTable 
           
     });
     

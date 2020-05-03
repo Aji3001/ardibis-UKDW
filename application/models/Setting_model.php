@@ -16,7 +16,12 @@ class Setting_model extends CI_model
 
     public function getCat()
     {
-        return $this->db->get('kategori')->result_array();
+        return $this->db->get('v_jml_kat')->result_array();
+    }
+
+    public function getCatById($id)
+    {
+        return $this->db->get_where('kategori',['id_kat'=>$id])->result_array();
     }
 
     public function deleteCat($id)
@@ -48,17 +53,16 @@ class Setting_model extends CI_model
         return $this->db->affected_rows();
     }
 
-    public function getSubKatJson($id)
+    public function getSubKat($id)
     {
-        $hasil=$this->db->query("SELECT * FROM sub_kategori where id_kat=$id");
-        return $hasil->result();
+        return $this->db->get_where('sub_kategori',['id_kat'=>$id])->result_array();
     }
 
-    public function deleteSubKat()
+    public function deleteSubKat($id)
     {
-        $id_sub=$this->input->post('id_sub_kat');
-        $this->db->where('id_sub_kategori', $id_sub);
-        $result=$this->db->delete('sub_kategori');
-        return $result;
+        $this->db->delete('sub_kategori',['id_sub_kategori'=> $id]);
+        return $this->db->affected_rows();
     }
+
+    
 }
