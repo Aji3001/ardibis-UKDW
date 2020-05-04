@@ -2,12 +2,11 @@
 
 class Setting_model extends CI_model
 {
-    public function insertCat($nama,$deskripsi,$use_exp)
+    public function insertCat($nama,$deskripsi)
     {
         $data = [
             "nama_kategori" => $nama,
-            "deskripsi" => $deskripsi,
-            "use_exp" => $use_exp
+            "deskripsi" => $deskripsi
         ];
 
         $ins=$this->db->insert('kategori', $data);
@@ -30,23 +29,21 @@ class Setting_model extends CI_model
         return $this->db->affected_rows();
     }
     
-    public function editCat($id,$nama,$deskripsi,$use_exp)
+    public function editCat($id,$nama,$deskripsi)
     {
         $this->db->set('nama_kategori', $nama);
         $this->db->set('deskripsi', $deskripsi);
-        $this->db->set('use_exp',$use_exp);
         $this->db->where('id_kat',$id);
         $this->db->update('kategori');
 
         return $this->db->affected_rows();
     }
 
-    public function addSubKat($id,$nama,$use_exp)
+    public function addSubKat($id,$nama)
     {
         $data = [
             "nama_sub_kategori" => $nama,
-            "id_kat" => $id,
-            "use_exp" => $use_exp
+            "id_kat" => $id
         ];
 
         $ins=$this->db->insert('sub_kategori', $data);

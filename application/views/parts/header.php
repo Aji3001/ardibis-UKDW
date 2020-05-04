@@ -12,12 +12,13 @@
   <link href="<?= base_url()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="<?= base_url()?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="select2.css">
-<link rel="stylesheet" href="select2-bootstrap.css">
+  <link rel="stylesheet" href="select2-bootstrap.css">
   <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <link href="<?= base_url()?>assets/css/ruang-admin.min.css" rel="stylesheet">
   <link href="<?= base_url()?>assets/css/custom.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+  
 
 </head>
 

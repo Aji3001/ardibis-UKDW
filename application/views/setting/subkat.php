@@ -16,7 +16,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Sub Kategori</th>
-                        <th>Perlu Durasi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -25,10 +24,6 @@
                     <tr>
                         <td><?= $i++?></td>
                         <td><?= $sub['nama_sub_kategori']?></td>
-                        <td>
-                            <?php if($sub['use_exp']=='on'){echo ' Ya';}?>
-                            <?php if($sub['use_exp']=='off'){echo ' Tidak';}?>
-                        </td>
                         <td>
                             <a href="<?= base_url()?>setting/hapusSub/<?= $sub['id_sub_kategori']?>/<?= $sub['id_kat']?>" class="btn btn-sm btn-danger tombol-hapus">hapus</a>
                         </td>
@@ -59,13 +54,6 @@
             <div class="form-group">
                 <label for="">Nama Sub Kategori</label>
                 <input type="text" name="nama" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="use_exp" class="custom-control-input" id="customControlAutosizing">
-                <label class="custom-control-label" for="customControlAutosizing">Memerlukan Durasi</label>
-                </div>
-                <small>Beri tanda centang pada durasi apabila sub kategori ini memerlukan tanggal mulai dan tanggal selesai (durasi)</small>
             </div>
         
         <?php endforeach?>

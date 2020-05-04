@@ -25,7 +25,6 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    <th>Perlu Durasi</th>
                     <th>Jml Sub Kategori</th>
                     <th>Aksi</th>
                 </tr>
@@ -35,12 +34,6 @@
                 <tr>
                     <td><?= $i++?></td>
                     <td><?= $kat['nama_kategori']?></td>
-                    <td>
-                        <?php
-                            if($kat['use_exp']=='on'){echo'Ya';}
-                            else{echo 'Tidak' ;};
-                        ?>
-                    </td>
                     <td><small><?= $kat['jumlah_sub']?> Kategori</small></td>
                     <td>
                         <a href="<?=base_url()?>setting/subkat/<?=$kat['id_kat']?>" class="btn btn-sm btn-success">
@@ -83,13 +76,6 @@
                     <label for="">Deskripsi <small><i>Opsional</i></small></label>
                     <textarea name="deskripsi" id=""  class="form-control" cols="30" rows="5"></textarea>
                 </div>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                    <input type="checkbox" name="use_exp" class="custom-control-input" id="customControlAutosizing">
-                    <label class="custom-control-label" for="customControlAutosizing">Memerlukan Durasi</label>
-                    </div>
-                    <small>Beri tanda centang pada durasi apabila kategori ini memerlukan tanggal mulai dan tanggal selesai (durasi)</small>
-                </div>
             
         </div>
         <div class="modal-footer">
@@ -122,13 +108,6 @@
         <div class="form-group">
             <label for="">Deskripsi <small><i>Opsional</i></small></label>
             <textarea name="deskripsi" id=""  class="form-control" cols="30" rows="5"><?= $detail['deskripsi']?></textarea>
-        </div>
-        <div class="form-group">
-            <div class="custom-control custom-checkbox">
-            <input type="checkbox" <?php if($detail['use_exp']=='on'){echo'checked';}?> name="use_exp" class="custom-control-input" id="ckDet<?=$detail['id_kat']?>">
-            <label class="custom-control-label" for="ckDet<?=$detail['id_kat']?>">Memerlukan Durasi</label>
-            </div>
-            <small>Beri tanda centang pada durasi apabila kategori ini memerlukan tanggal mulai dan tanggal selesai (durasi)</small>
         </div>
         
       </div>
