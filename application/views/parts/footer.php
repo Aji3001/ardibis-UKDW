@@ -19,6 +19,7 @@
     <i class="fas fa-angle-up"></i>
   </a>
   <script src="<?= base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
   <script src="<?= base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
   <script src="<?= base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -28,6 +29,7 @@
   <script src="<?= base_url()?>assets/vendor/chart.js/Chart.min.js"></script>
   <script src="<?= base_url()?>assets/js/demo/chart-area-demo.js"></script>
   <script src="<?= base_url()?>assets/js/custom.js"></script>
+
 
   <script src="<?= base_url();?>assets/js/sweetalert2.all.min.js"></script>
 	<script src="<?= base_url();?>assets/js/sweetalertcontrol.js"></script>
@@ -65,12 +67,56 @@
 
 
   <script type="text/javascript">
-    var url="<?= base_url()?>";
 
     $(document).ready(function () {
           $(".select2").select2();
-          $('#tableis').DataTable(); // ID From dataTable 
-          $('.dt2').DataTable(); // ID From dataTable 
+          $('#tableis').DataTable(); 
+          $('.dt2').DataTable();
+          $('#tableUser').DataTable();
+          // autocomplete judul dokumen
+          $('#key').autocomplete({
+                source: "<?= base_url('main/get_autocomplete');?>",
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+                    $("#filter").submit(); 
+                }
+          });
+          $("#username").on({
+            keydown: function(e) {
+              if (e.which === 32)
+                return false;
+            },
+            change: function() {
+              this.value = this.value.replace(/\s/g, "");
+            }
+          });
+          // cek username
+          $("#username").keyup(function(){
+            $("#userav").html("<span class='text-warning'><i><small>Memeriksa..</small></i></span>");
+            var username=$("#username").val();
+            if(username.length<4){
+              $("#userav").html("<span class='text-warning'><i><small>Min 4 karakter</small></i></span>");
+            }else{
+              $.ajax({
+                type:"post",
+                url:"<?= base_url('setting/getUsername')?>",
+                data:"username="+username,
+                  success:function(data){
+                  if(data==0){
+                    $("#userav").html("<span class='text-success'><i><small>Tersedia</small></i></span>");
+                    $('#txtNewPassword').prop('disabled',false);
+                    $('#txtConfirmPassword').prop('disabled',false);
+                  }
+                  else{
+                    $("#userav").html("<span class='text-danger'><i><small>Tidak Tersedia</small></i></span>");
+                    $('#txtNewPassword').prop('disabled',true);
+                    $('#txtConfirmPassword').prop('disabled',true);
+                  }
+                }
+              });
+            }
+          });
+          // end of cek username
           
     });
     

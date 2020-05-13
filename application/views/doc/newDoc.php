@@ -50,19 +50,28 @@
                     
                     <div class="form-group border-top" style="padding-top:10px">
                         <label for="">Nama Dokumen <b><span class="text-danger">*</span></b></label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+                    <div class="form-group border-top" style="padding-top:10px">
+                        <label for="">
+                            <?php if(isset($_GET['ket'])&&$_GET['ket']=='1'){echo' Dari';}?>
+                            <?php if(isset($_GET['ket'])&&$_GET['ket']=='2'){echo' Tujuan';}?>
+                            <?php if(isset($_GET['ket'])&&$_GET['ket']=='0'){echo' Person / Instansi Terkait';}?>
+                            <b><span class="text-danger">*</span></b>
+                        </label>
+                        <input type="text" name="target" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Catatan <b><span class="text-danger">**</span></b></label>
-                        <textarea type="text" row=30 class="form-control"></textarea>
+                        <textarea type="text" name="catatan" row=30 class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Unggah Dokumen | <i>pdf, word, png, jpg, jpeg</i> <b><span class="text-danger">*</span></b></label> <br>
-                        <input type="file" class="btn btn-primary btn-sm" required>
+                        <input type="file" name="file" class="btn btn-primary btn-sm" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Dokumen diterima / dikirim <b><span class="text-danger">**</span></b></label>
-                        <input type="date" class="form-control">
+                        <input type="date" name="rec_date" class="form-control">
                     </div>
                     <div class="form-group border-top" style="padding-top:15px">
                         <div class="custom-control custom-switch ">
@@ -82,9 +91,9 @@
                     </div>
                     <div class="form-group" style="padding-top:15px">
                         <label for=""><b>Visibilitas</b></label>
-                        <select name="" id="" class="form-control col-md-4 border border-warning">
-                            <option value="">Publik</option>
-                            <option value="">Hanya Pengguna Sistem</option>
+                        <select name="visible" id="" class="form-control col-md-4 border border-warning">
+                            <option value="">Publik (tanpa login)</option>
+                            <option value="">Pengguna Sistem (login)</option>
                         </select>
                     </div>
                     <div class="form-group" style="padding-top:15px">

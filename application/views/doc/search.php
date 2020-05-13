@@ -1,4 +1,12 @@
-
+<div class="card card-body mb-3 border border-warning">
+    <h5>
+    <i class="fas fa-info-circle mr-2" style="color:orange"></i>
+        Selamat datang di portal <b>Arsip Digital Fakultas Bisnis UKDW</b>
+    </h5>
+    <p>
+        Beberapa dokumen mungkin tidak dapat diakses secara publik, silahkan login untuk mendapatkan akses...
+    </p>
+</div>
 <div class="card">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h6 class="m-0 font-weight-bold text-primary">Cari Data</h6>
@@ -6,26 +14,29 @@
     <div class="card-body">
         <form action="" id="filter" method="get">
             <div class="row">
-                <div class="form-group col-md-6">
-                    <input type="text" id="key" class="form-control" name="key" placeholder="kata kunci" value="<?php if(isset($_GET['key'])){echo $_GET['key'];}?>">
+                <div class="form-group col-md-3">
+                    <input type="text" id="key" class="form-control" name="key" placeholder="Nama Dokumen" value="<?php if(isset($_GET['key'])){echo $_GET['key'];}?>">
                 </div>
                 <div class="form-group col-md-3">
                     <select name="kategori" id="kategori" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih kategori</option>
+                        <option value="" disabled selected>- Piih Kategori -</option>
+                        <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih </option>
                         <option value="sk" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'sk' ? 'selected=""' : '' ?>>SK</option>
                         <option value="kategori2" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori2' ? 'selected=""' : '' ?>>Kategori 2</option>
                     </select>
                 </div>
                 <!-- <div class="form-group col-md-3">
-                    <select name="kategori" id="kategori" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih kategori</option>
+                    <select name="sub" id="subkategori" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                        <option value="" disabled selected>- Pilih Sub Kategori -</option>
+                        <option value="default" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih </option>
                         <option value="kategori1" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori1' ? 'selected=""' : '' ?>>Kategori 1</option>
                         <option value="kategori2" <?= isset($_GET['kategori']) && $_GET['kategori'] == 'kategori2' ? 'selected=""' : '' ?>>Kategori 2</option>
                     </select>
                 </div> -->
                 <div class="form-group col-md-3">
                     <select name="keterangan" id="keterangan" class="form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" >
-                        <option value="default" <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih keterangan</option>
+                        <option value="" disabled selected>- Pilih Keterangan -</option>
+                        <option value="default" <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'default' ? 'selected=""' : '' ?>>Tidak memilih </option>
                         <option value="masuk"  <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'masuk' ? 'selected=""' : '' ?>>Surat Masuk</option>
                         <option value="keluar"  <?= isset($_GET['keterangan']) && $_GET['keterangan'] == 'keluar' ? 'selected=""' : '' ?>>Surat Keluar</option>
                     </select>

@@ -61,5 +61,71 @@ class Setting_model extends CI_model
         return $this->db->affected_rows();
     }
 
+    public function addPengguna()
+    {
+        $this->db->trans_start();
+            $data = [
+                "nama" => $_POST['nama'],
+                "jabatan" => $_POST['jabatan'],
+                "note" => $_POST['catatan'],
+                "username" => $_POST['username'],
+                "password" => md5($_POST['password']),
+                "status" => '1'
+            ];
+
+            $this->db->insert('user', $data);
+            $ins=$this->db->insert_id();
+        $this->db->trans_complete();
+
+
+        if(isset($_POST['dokumen'])){
+            $this->db->trans_start();
+            $data = [
+                "id_user" => $ins,
+                "access_id"=>'1'
+            ];
+
+            $this->db->insert('role', $data);
+            $this->db->trans_complete();
+        };
+        if(isset($_POST['user'])){
+            $this->db->trans_start();
+            $data = [
+                "id_user" => $ins,
+                "access_id"=>'2'
+            ];
+
+            $this->db->insert('role', $data);
+            $this->db->trans_complete();
+        };
+        if(isset($_POST['setting'])){
+            $this->db->trans_start();
+            $data = [
+                "id_user" => $ins,
+                "access_id"=>'3'
+            ];
+
+            $this->db->insert('role', $data);
+            $this->db->trans_complete();
+        };
+    }
+
+    public function getUsername()
+    {
+        return $this->db->get_where('user',['username'=>$_POST['username']]);
+    }
+
+    public function getUser()
+    {
+        return $this->db->get('user')->result_array();
+    }
+
+    public function deleteUser($id)
+    {
+        $this->db->delete('user',['id_user'=>$id]);
+        return $this->db->affected_rows();
+    }
+
+   
     
 }

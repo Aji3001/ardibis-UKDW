@@ -88,6 +88,45 @@ class Setting extends CI_COntroller{
         }
         redirect('setting/subkat/'.$backid);
     }
+    
+    public function pengguna()
+    {   
+        $data['page']='pengguna';
+        $data['user']=$this->setting_model->getUser();
+        $this->load->view('parts/header',$data);
+        $this->load->view('setting/user',$data);
+        $this->load->view('parts/footer');
+    }
+
+    public function getUsername()
+    {
+        $cek=$this->setting_model->getUsername();
+        echo $cek->num_rows();
+    }
+
+    public function addPengguna()
+    {
+        $add =$this->setting_model->addPengguna();
+        if($add=='1'){
+            $this->session->set_flashdata('success', 'Pengguna Berhasil Ditambahkan');
+        }else{
+            $this->session->set_flashdata('error', 'Ada Kesalahan');
+        }
+        redirect('setting/pengguna/');
+    }
+
+    public function deleteUser($id)
+    {
+        $delete =$this->setting_model->deleteUser($id);
+        if($delete=='1'){
+            $this->session->set_flashdata('success', 'Pengguna Berhasil Dihapus');
+        }else{
+            $this->session->set_flashdata('error', 'Ada Kesalahan');
+        }
+        redirect('setting/pengguna/');
+    }
+
+    
 
   
 
